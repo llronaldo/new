@@ -6,12 +6,12 @@ from home.serializers import ContactSerializer
 
 
 class ContactCreateAPIView(generics.CreateAPIView):
-    """创建联系表单记录 — 公开接口，无需认证，禁用 CSRF"""
+    """联系表单 — 公开接口，无需认证"""
 
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     permission_classes = [AllowAny]
-    authentication_classes = []  # 不使用 SessionAuthentication，避免 CSRF 403
+    authentication_classes = []
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
