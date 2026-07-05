@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://efficient-compassion-production-1ac8.up.railway.app/api'
 
 const api = axios.create({
   baseURL: API_BASE,
