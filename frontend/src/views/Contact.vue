@@ -135,7 +135,7 @@
         <div class="map-content">
           <span class="map-pin">&#9678;</span>
           <p class="map-addr">佛山市顺德区乐从镇家居大道 288 号 · 臻品家居总部</p>
-          <p class="map-sub">广佛线 · 世纪莲站 B 出口，打车约 15 分钟<br/>广州南站驾车约 40 分钟 · 白云机场驾车约 70 分钟</p>
+          <p class="map-sub">广佛线 · 东平站 B 出口，打车约 12 分钟<br/>广州南站驾车约 35 分钟 · 白云机场驾车约 60 分钟</p>
         </div>
       </div>
     </section>

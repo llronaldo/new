@@ -33,7 +33,7 @@
         <div class="footer-col brand-col">
           <h3 class="footer-brand"><span class="footer-logo-icon">&#9675;</span> 臻品家居</h3>
           <p class="footer-tagline">源头工厂 · 匠心制造</p>
-          <p class="footer-copy">&copy; 2010–2025 臻品家居 版权所有</p>
+          <p class="footer-copy">&copy; 2010–2026 臻品家居 版权所有</p>
         </div>
         <div class="footer-col">
           <h4>快速导航</h4>
