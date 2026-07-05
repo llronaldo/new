@@ -1,0 +1,5 @@
+# Cloudflare Pages 重定向规则
+# 所有 /api/* /admin/* /media/* 请求转发到 Railway 后端
+/api/*  https://efficient-compassion-production-1ac8.up.railway.app/api/:splat  200
+/admin/*  https://efficient-compassion-production-1ac8.up.railway.app/admin/:splat  200
+/media/* https://efficient-compassion-production-1ac8.up.railway.app/media/:splat 200
