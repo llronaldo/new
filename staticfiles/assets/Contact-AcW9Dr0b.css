@@ -1,0 +1,99 @@
+
+.page-banner[data-v-d01626fb] { padding: 200px 0 100px; background: linear-gradient(135deg, #1a1a1a, #2c2416); text-align: center;
+}
+.banner-eyebrow[data-v-d01626fb] { font-size: 12px; letter-spacing: 8px; color: var(--color-gold); margin-bottom: 16px;
+}
+.banner-inner h1[data-v-d01626fb] { font-family: var(--font-serif); font-size: 52px; font-weight: 300; color: #fff; letter-spacing: 12px; margin-bottom: 12px;
+}
+.banner-sub[data-v-d01626fb] { font-size: 15px; color: rgba(255,255,255,0.45); letter-spacing: 3px;
+}
+.section[data-v-d01626fb] { padding: 100px 0;
+}
+
+/* Contact Grid */
+.contact-grid[data-v-d01626fb] { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px;
+}
+
+/* 信息 */
+.info-block[data-v-d01626fb] { margin-bottom: 48px;
+}
+.info-block h3[data-v-d01626fb] { font-family: var(--font-serif); font-size: 22px; font-weight: 400; letter-spacing: 4px; color: var(--color-dark); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--color-border);
+}
+.info-row[data-v-d01626fb] { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px;
+}
+.info-item[data-v-d01626fb] {}
+.info-label[data-v-d01626fb] { font-size: 11px; letter-spacing: 3px; color: var(--color-gold); margin-bottom: 8px; text-transform: uppercase;
+}
+.info-item p[data-v-d01626fb] { font-size: 14px; color: var(--color-gray); line-height: 1.9;
+}
+.info-text[data-v-d01626fb] { font-size: 14px; color: var(--color-gray); line-height: 1.9; margin-bottom: 6px;
+}
+.info-email[data-v-d01626fb] { font-size: 18px; color: var(--color-dark); font-family: var(--font-serif); letter-spacing: 1px; margin-bottom: 16px;
+}
+
+/* 表单 */
+.contact-form-wrapper[data-v-d01626fb] { background: #fff; padding: 52px; border: 1px solid var(--color-border);
+}
+.contact-form-wrapper h3[data-v-d01626fb] { font-family: var(--font-serif); font-size: 24px; font-weight: 400; letter-spacing: 4px; color: var(--color-dark); margin-bottom: 8px;
+}
+.form-sub[data-v-d01626fb] { font-size: 13px; color: var(--color-light-gray); margin-bottom: 36px; letter-spacing: 1px;
+}
+.fm-row[data-v-d01626fb] { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 0;
+}
+.fm-row-3[data-v-d01626fb] { grid-template-columns: 1fr 1fr 1fr;
+}
+.fm-group[data-v-d01626fb] { margin-bottom: 24px;
+}
+.fm-full-group[data-v-d01626fb] { margin-bottom: 24px;
+}
+.fm-label[data-v-d01626fb] { display: block; font-size: 12px; letter-spacing: 2px; color: var(--color-dark); margin-bottom: 10px;
+}
+.fm-input[data-v-d01626fb] { width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--color-border); font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.3s; background: transparent; color: var(--color-dark);
+}
+.fm-input[data-v-d01626fb]::placeholder { color: #bbb;
+}
+.fm-input[data-v-d01626fb]:focus { border-color: var(--color-gold);
+}
+select.fm-input[data-v-d01626fb] { color: var(--color-gray); cursor: pointer;
+}
+.fm-textarea[data-v-d01626fb] { resize: vertical;
+}
+.fm-submit[data-v-d01626fb] { width: 100%; padding: 18px; background: var(--color-dark); color: #aaa; border: none; font-size: 15px; letter-spacing: 4px; cursor: pointer; transition: all 0.3s; font-family: inherit; margin-top: 8px;
+}
+.fm-submit[data-v-d01626fb]:hover { background: var(--color-gold); color: #fff;
+}
+.fm-submit[data-v-d01626fb]:disabled { opacity: 0.5; cursor: not-allowed;
+}
+/* 提交消息 */
+.submit-msg[data-v-d01626fb] { margin-top: 16px; padding: 12px; font-size: 13px; letter-spacing: 1px; text-align: center;
+}
+.submit-msg.success[data-v-d01626fb] { color: #2d6a4f; background: #d8f3dc; border: 1px solid #b7e4c7;
+}
+.submit-msg.error[data-v-d01626fb] { color: #9b2226; background: #ffddd6; border: 1px solid #ffb3a7;
+}
+
+/* 地图 */
+.map-placeholder[data-v-d01626fb] { background: linear-gradient(135deg, #2a2a2a, #3a352d); padding: 140px 0; text-align: center;
+}
+.map-pin[data-v-d01626fb] { display: block; font-size: 52px; color: var(--color-gold); margin-bottom: 28px;
+}
+.map-addr[data-v-d01626fb] { color: #aaa; font-size: 20px; letter-spacing: 4px; margin-bottom: 12px; font-family: var(--font-serif);
+}
+.map-sub[data-v-d01626fb] { font-size: 14px; color: #595959; letter-spacing: 1px; line-height: 1.8;
+}
+@media (max-width: 768px) {
+.page-banner[data-v-d01626fb] { padding: 140px 0 60px;
+}
+.banner-inner h1[data-v-d01626fb] { font-size: 32px; letter-spacing: 4px;
+}
+.contact-grid[data-v-d01626fb] { grid-template-columns: 1fr; gap: 48px;
+}
+.fm-row[data-v-d01626fb], .fm-row-3[data-v-d01626fb] { grid-template-columns: 1fr; gap: 0;
+}
+.info-row[data-v-d01626fb] { grid-template-columns: 1fr;
+}
+.contact-form-wrapper[data-v-d01626fb] { padding: 32px 24px;
+}
+.map-addr[data-v-d01626fb] { font-size: 16px; letter-spacing: 2px;
+}
+}
