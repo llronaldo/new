@@ -106,6 +106,9 @@ DATABASES = {
         'PASSWORD': 'LLliuleiqwer123',
         'HOST': 'db.eubssgchzdsnownzrwbd.supabase.co',
         'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
 
