@@ -161,6 +161,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # CORS 允许前端跨域访问
 CORS_ALLOW_ALL_ORIGINS = True
 
+# CSRF 信任来源（允许通过自定义域名登录 admin）
+CSRF_TRUSTED_ORIGINS = [
+    'https://efficient-compassion-production-1ac8.up.railway.app',
+    'https://ll54184.eu.cc',
+]
+
 # Django REST Framework 配置
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
