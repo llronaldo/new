@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140" width="600" height="140">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9a55c;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b8944b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9a7a35;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 图标：抽象几何体 — 由两个菱形重叠构成，象征"臻"字的精工与钻石质感 -->
+  <!-- 外层菱形（代表建筑/空间） -->
+  <polygon points="70,8 98,48 70,88 42,48" fill="none" stroke="url(#gold)" stroke-width="2.2" />
+  <!-- 内层菱形（代表产品/匠心内核） -->
+  <polygon points="70,24 88,48 70,72 52,48" fill="url(#gold)" opacity="0.85" />
+
+  <!-- 品牌中文名 -->
+  <text x="120" y="62" font-family="'Times New Roman', 'Noto Serif SC', 'STSong', 'Songti SC', serif" font-size="44" font-weight="400" fill="#1a1a1a" letter-spacing="14">臻品家居</text>
+
+  <!-- 英文副标题 -->
+  <text x="122" y="94" font-family="'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="12" fill="#8c8c8c" letter-spacing="8">ZHENPIN FURNITURE</text>
+
+  <!-- 底部细线装饰 -->
+  <line x1="120" y1="108" x2="420" y2="108" stroke="#b8944b" stroke-width="0.5" opacity="0.5" />
+</svg>
