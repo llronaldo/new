@@ -121,23 +121,23 @@ const filteredProducts = computed(() =>
 .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
 .product-card { background: #fff; border: 1px solid var(--color-border); transition: border-color 0.3s; }
 .product-card:hover { border-color: #ccc; }
-.product-img { height: 360px; }
-.p-sf1 { background: linear-gradient(135deg, #3a3028, #504436); }
-.p-sf2 { background: linear-gradient(135deg, #2c3035, #424850); }
-.p-sf3 { background: linear-gradient(135deg, #4a3f35, #5c4e40); }
-.p-sf4 { background: linear-gradient(135deg, #353840, #4a4d55); }
-.p-ct1 { background: linear-gradient(135deg, #2a2a2a, #3d3d3d); }
-.p-ct2 { background: linear-gradient(135deg, #3b3028, #4d4036); }
-.p-ct3 { background: linear-gradient(135deg, #2c3038, #404550); }
-.p-dt1 { background: linear-gradient(135deg, #353025, #4a4035); }
-.p-dt2 { background: linear-gradient(135deg, #2d2820, #3d352d); }
-.p-dc1 { background: linear-gradient(135deg, #3a3530, #504840); }
-.p-bd1 { background: linear-gradient(135deg, #2e2a28, #423d38); }
-.p-bd2 { background: linear-gradient(135deg, #332e2a, #484038); }
-.p-bd3 { background: linear-gradient(135deg, #302c26, #423a32); }
-.p-cb1 { background: linear-gradient(135deg, #2a2520, #3d3630); }
-.p-cb2 { background: linear-gradient(135deg, #302a24, #403830); }
-.p-cb3 { background: linear-gradient(135deg, #353028, #484036); }
+.product-img { height: 360px; background-size: cover; background-position: center; }
+.p-sf1 { background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80'); }
+.p-sf2 { background-image: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&q=80'); }
+.p-sf3 { background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80'); }
+.p-sf4 { background-image: url('https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=800&q=80'); }
+.p-ct1 { background-image: url('https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800&q=80'); }
+.p-ct2 { background-image: url('https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?w=800&q=80'); }
+.p-ct3 { background-image: url('https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80'); }
+.p-dt1 { background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80'); }
+.p-dt2 { background-image: url('https://images.unsplash.com/photo-1617104678098-de229db51175?w=800&q=80'); }
+.p-dc1 { background-image: url('https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80'); }
+.p-bd1 { background-image: url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80'); }
+.p-bd2 { background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80'); }
+.p-bd3 { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80'); }
+.p-cb1 { background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800&q=80'); }
+.p-cb2 { background-image: url('https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&q=80'); }
+.p-cb3 { background-image: url('https://images.unsplash.com/photo-1597072689227-8882273e8caa?w=800&q=80'); }
 
 .product-body { padding: 32px 28px; }
 .product-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -161,8 +161,7 @@ const filteredProducts = computed(() =>
 .guide-text p { font-size: 15px; color: var(--color-gray); line-height: 1.9; margin-bottom: 16px; }
 .text-link { color: var(--color-gold); text-decoration: none; font-size: 14px; letter-spacing: 3px; border-bottom: 1px solid var(--color-gold); padding-bottom: 4px; transition: opacity 0.3s; }
 .text-link:hover { opacity: 0.7; }
-.guide-visual { min-height: 400px; background: linear-gradient(135deg, #2c2822, #4a4035); position: relative; }
-.guide-visual::after { content: '🏛'; position: absolute; bottom: 20px; right: 20px; font-size: 48px; opacity: 0.2; }
+.guide-visual { min-height: 400px; background: url('https://images.unsplash.com/photo-1600210492492-0946911123ea?w=1200&q=80') center/cover; position: relative; }
 
 @media (max-width: 768px) {
   .page-banner { padding: 140px 0 60px; }

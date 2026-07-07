@@ -247,24 +247,19 @@ const clients = ['悦榕庄酒店集团', '万科地产', '华润置地', '字�
 .text-link { color: var(--color-gold); text-decoration: none; font-size: 14px; letter-spacing: 3px; transition: opacity 0.3s; border-bottom: 1px solid var(--color-gold); padding-bottom: 4px; }
 .text-link:hover { opacity: 0.7; }
 .intro-images { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.intro-img { height: 420px; background-size: cover; }
-.img-main { background: linear-gradient(135deg, #2c2416, #4a3f2f); position: relative; }
-.img-main::after { content: '🛋'; position: absolute; bottom: 20px; left: 20px; font-size: 56px; opacity: 0.3; }
-.img-sub { background: linear-gradient(135deg, #3a3228, #5c4f3e); margin-top: 40px; position: relative; }
-.img-sub::after { content: '🪵'; position: absolute; bottom: 20px; left: 20px; font-size: 56px; opacity: 0.3; }
+.intro-img { height: 420px; background-size: cover; background-position: center; border-radius: 2px; }
+.img-main { background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80'); position: relative; }
+.img-sub { background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80'); margin-top: 40px; position: relative; }
 
 /* ===== Series ===== */
 .series-section { background: #fafaf8; }
 .series-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .series-card { background: #fff; transition: box-shadow 0.4s; }
 .series-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-.series-img { height: 300px; position: relative; }
-.s-italian { background: linear-gradient(135deg, #2c2c2c, #4a4a4a); }
-.s-italian::after { content: '✦'; position: absolute; bottom: 16px; right: 20px; font-size: 64px; color: rgba(255,255,255,0.04); }
-.s-chinese { background: linear-gradient(135deg, #3a2a1a, #5c4033); }
-.s-chinese::after { content: '◆'; position: absolute; bottom: 16px; right: 20px; font-size: 64px; color: rgba(255,255,255,0.04); }
-.s-modern { background: linear-gradient(135deg, #2a3035, #3d444b); }
-.s-modern::after { content: '◈'; position: absolute; bottom: 16px; right: 20px; font-size: 64px; color: rgba(255,255,255,0.04); }
+.series-img { height: 300px; position: relative; background-size: cover; background-position: center; }
+.s-italian { background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80'); }
+.s-chinese { background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800&q=80'); }
+.s-modern { background-image: url('https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&q=80'); }
 .series-info { padding: 36px 32px; }
 .series-tag { font-size: 11px; letter-spacing: 4px; color: var(--color-gold); text-transform: uppercase; }
 .series-info h3 { font-family: var(--font-serif); font-size: 24px; font-weight: 400; color: var(--color-dark); margin: 10px 0; letter-spacing: 3px; }
@@ -278,11 +273,11 @@ const clients = ['悦榕庄酒店集团', '万科地产', '华润置地', '字�
 .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
 .project-card { transition: transform 0.4s; }
 .project-card:hover { transform: translateY(-4px); }
-.project-img { height: 280px; }
-.p-hotel { background: linear-gradient(135deg, #1a1a2e, #16213e); }
-.p-villa { background: linear-gradient(135deg, #2d1f1a, #3d2c26); }
-.p-commercial { background: linear-gradient(135deg, #1a252c, #243540); }
-.p-office { background: linear-gradient(135deg, #2a3038, #3d4550); }
+.project-img { height: 280px; background-size: cover; background-position: center; }
+.p-hotel { background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80'); }
+.p-villa { background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80'); }
+.p-commercial { background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'); }
+.p-office { background-image: url('https://images.unsplash.com/photo-1604328699207-20bf1514b7b0?w=800&q=80'); }
 .project-info { padding: 24px 0; }
 .project-cat { font-size: 11px; letter-spacing: 4px; color: var(--color-gold); }
 .project-info h3 { font-size: 22px; font-weight: 400; font-family: var(--font-serif); color: var(--color-dark); margin: 8px 0 6px; letter-spacing: 2px; }
