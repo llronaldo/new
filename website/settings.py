@@ -23,23 +23,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=p*nw@vfdn5zhkq$td33shk58ouoa^(d!(h50qz28aqz8qoe(d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+_os = __import__('os')
 
-# Railway 会自动注入 PUBLIC_DOMAIN 环境变量
-# Railway 不会自动注入，所以手动配置域名
-RAILWAY_DOMAIN = 'new-production-ba27.up.railway.app'
+DEBUG = _os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
+
+# 通过环境变量动态注入域名和主机名
+_RENDER_HOST = _os.environ.get('RENDER_EXTERNAL_HOSTNAME')  # Render 自动注入
+_RAILWAY_HOST = _os.environ.get('RAILWAY_PUBLIC_DOMAIN')    # Railway 自动注入
+_CUSTOM_HOST = _os.environ.get('ALLOWED_HOST')
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    RAILWAY_DOMAIN,
-    '.up.railway.app',  # 匹配所有 railway 子域名
     'll54184.eu.cc',
+    '.up.railway.app',
+    '.onrender.com',  # Render 默认域名
 ]
-
-# 也支持通过环境变量动态注入
-import os as _os
-_CUSTOM_HOST = _os.environ.get('RAILWAY_PUBLIC_DOMAIN') or _os.environ.get('ALLOWED_HOST')
+if _RENDER_HOST:
+    ALLOWED_HOSTS.append(_RENDER_HOST)
+if _RAILWAY_HOST:
+    ALLOWED_HOSTS.append(_RAILWAY_HOST)
 if _CUSTOM_HOST:
     ALLOWED_HOSTS.append(_CUSTOM_HOST)
 

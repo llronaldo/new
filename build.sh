@@ -4,7 +4,15 @@ set -e
 echo "=== Installing Python dependencies ==="
 pip install -r requirements.txt
 
-echo "=== Installing Node.js dependencies & building frontend ==="
+echo "=== Setting up Node.js ==="
+# Render 等平台默认安装了 Node.js，如果没装则自动安装
+if ! command -v node &> /dev/null; then
+  curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+  apt-get install -y nodejs
+fi
+echo "Node.js $(node -v), npm $(npm -v)"
+
+echo "=== Installing frontend dependencies & building ==="
 cd frontend
 npm install
 npm run build
