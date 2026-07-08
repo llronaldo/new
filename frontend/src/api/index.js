@@ -26,18 +26,39 @@ api.interceptors.response.use(
 // ===== 联系表单 API =====
 /**
  * 提交联系表单
- * @param {Object} data - 表单数据
- * @param {string} data.contact_name - 联系人
- * @param {string} data.contact_phone - 联系电话
- * @param {string} data.company - 公司/品牌
- * @param {string} data.project_type - 项目类型
- * @param {string} data.quantity - 预计数量
- * @param {string} data.city - 交付城市
- * @param {string} data.budget - 预算区间
- * @param {string} data.message - 需求说明
  */
 export function submitContact(data) {
   return api.post('/contact/', data)
+}
+
+// ===== 产品 API =====
+/** 获取产品分类列表 */
+export function getProductCategories() {
+  return api.get('/product-categories/')
+}
+/** 获取产品列表，支持 ?category=slug & ?recommended=1 */
+export function getProducts(params = {}) {
+  return api.get('/products/', { params })
+}
+
+// ===== 案例 API =====
+/** 获取案例分类列表 */
+export function getCaseCategories() {
+  return api.get('/case-categories/')
+}
+/** 获取案例列表，支持 ?category=slug & ?recommended=1 */
+export function getCases(params = {}) {
+  return api.get('/cases/', { params })
+}
+
+// ===== 新闻 API =====
+/** 获取新闻分类列表 */
+export function getNewsCategories() {
+  return api.get('/news-categories/')
+}
+/** 获取新闻列表，支持 ?category=slug & ?top=1 */
+export function getNews(params = {}) {
+  return api.get('/news/', { params })
 }
 
 export default api
