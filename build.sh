@@ -1,13 +1,22 @@
 #!/bin/bash
 set -e
 
-echo "=== Installing dependencies ==="
+echo "=== Installing Python dependencies ==="
 pip install -r requirements.txt
 
-echo "=== Collecting static files ==="
-python manage.py collectstatic --noinput
+echo "=== Installing Node.js dependencies & building frontend ==="
+cd frontend
+npm install
+npm run build
+cd ..
 
 echo "=== Running migrations ==="
 python manage.py migrate --noinput
 
-echo "=== Build complete ==="# Cache bust Thu Jul  9 03:30:21     2026
+echo "=== Seeding demo data ==="
+python seed_data.py || echo "Seed skipped (data may already exist)"
+
+echo "=== Collecting static files ==="
+python manage.py collectstatic --noinput
+
+echo "=== Build complete ==="
