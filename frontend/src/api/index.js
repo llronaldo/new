@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://ll54184.eu.cc/api'
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://new-n8gt.onrender.com/api'
 
 const api = axios.create({
   baseURL: API_BASE,

@@ -1,5 +1,5 @@
 # Cloudflare Pages 重定向规则
-# 所有 /api/* /admin/* /media/* 请求转发到自定义域名后端
-/api/*  https://ll54184.eu.cc/api/:splat  200
-/admin/*  https://ll54184.eu.cc/admin/:splat  200
-/media/* https://ll54184.eu.cc/media/:splat 200
+# 所有 /api/* /admin/* /media/* 请求转发到 Render 后端
+/api/*  https://new-n8gt.onrender.com/api/:splat  200
+/admin/*  https://new-n8gt.onrender.com/admin/:splat  200
+/media/* https://new-n8gt.onrender.com/media/:splat 200

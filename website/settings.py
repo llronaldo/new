@@ -170,6 +170,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CSRF 信任来源（允许通过自定义域名登录 admin）
 CSRF_TRUSTED_ORIGINS = [
     'https://ll54184.eu.cc',
+    'https://new-n8gt.onrender.com',
 ]
 
 # Django REST Framework 配置
