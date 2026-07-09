@@ -173,6 +173,10 @@ CSRF_TRUSTED_ORIGINS = [
     'https://new-n8gt.onrender.com',
 ]
 
+# Render 反向代理正确识别 HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+
 # Django REST Framework 配置
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
