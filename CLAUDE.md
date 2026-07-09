@@ -1,151 +1,176 @@
-# 企业官网项目 (Django + Vue 3)
+# 臻品家居企业官网 (Django + Vue 3)
 
 ## 项目概述
 
-深圳未来科技有限公司企业官网，采用 Django 6 后端 + Vue 3 前端的分离架构。
+臻品家居（ZhenPin Furniture）企业官网，位于佛山顺德，专注高端家具制造。采用 Django 6 后端 + Vue 3 前端的分离架构。
 
 - **后端**: Django 6.0 + SimpleUI 后台管理
 - **前端**: Vite 5 + Vue 3 + Vue Router 4 + Axios
-- **数据库**: SQLite (开发环境)
+- **数据库**: Supabase PostgreSQL（东京连接池）
+- **部署**: Render（build.sh 一键构建）
+- **域名**: ll54184.eu.cc
 - **Python**: 3.12.2
-- **Node.js**: 21.7.1
 
 ## 目录结构
 
 ```
 django企业官网/
-├── manage.py                  # Django 管理命令入口
-├── db.sqlite3                 # SQLite 数据库
-├── venv/                      # Python 虚拟环境
-├── media/                     # 上传文件目录
-├── staticfiles/               # 生产环境静态文件
+├── manage.py
+├── db.sqlite3                 # 本地开发数据库
+├── build.sh                   # Render 部署构建脚本
+├── seed_data.py               # 演示数据填充
+├── requirements.txt
+├── Procfile                   # gunicorn 启动
+├── venv/
 ├── website/                   # Django 项目配置
-│   ├── settings.py            # 全局配置
-│   ├── urls.py                # URL 根路由
-│   └── wsgi.py / asgi.py      # WSGI/ASGI 入口
-├── home/                      # 首页应用
-│   └── models.py
-├── about/                     # 企业概况应用
-│   ├── models.py              # 公司信息、发展历程、荣誉、团队
-│   └── admin.py               # 后台管理配置
-├── news/                      # 新闻中心应用
-│   ├── models.py              # 新闻分类、新闻资讯
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── about/                     # 企业概况（API + 模型 + Admin）
+│   ├── models.py              # CompanyInfo, DevelopmentHistory, Honor, TeamMember
+│   ├── serializers.py         # REST API 序列化器
+│   ├── views.py               # AboutAPIView
 │   └── admin.py
-├── products/                  # 产品管理应用
-│   ├── models.py              # 产品分类、产品、轮播图
+├── products/                  # 产品管理
+│   ├── models.py              # ProductCategory, Product, ProductImage
+│   ├── serializers.py
+│   ├── views.py
 │   └── admin.py
-├── cases/                     # 案例管理应用
-│   ├── models.py              # 案例分类、成功案例
+├── cases/                     # 案例管理
+│   ├── models.py              # CaseCategory, Case
+│   ├── serializers.py
+│   ├── views.py
 │   └── admin.py
-└── frontend/                  # Vue 3 前端项目
+├── news/                      # 新闻中心
+│   ├── models.py              # NewsCategory, News
+│   ├── serializers.py
+│   ├── views.py
+│   └── admin.py
+├── home/                      # 联系表单
+│   ├── models.py              # Contact
+│   ├── serializers.py
+│   ├── views.py
+│   └── admin.py
+├── templates/
+│   └── index.html             # Vue SPA 入口（npm run build 自动生成）
+├── media/                     # 上传文件
+└── frontend/                  # Vue 3 前端
+    ├── vite.config.js
     ├── package.json
-    ├── vite.config.js         # Vite 配置（含 API 代理）
-    ├── index.html
+    ├── dist/                  # 构建产物（纳入版本管理）
     └── src/
-        ├── main.js            # 应用入口
-        ├── App.vue            # 主布局（导航 + 底部）
-        ├── router/index.js    # 路由配置
-        ├── api/index.js       # Axios 实例
-        └── views/             # 页面组件
+        ├── main.js
+        ├── App.vue            # 主布局（导航 + 动态 Footer）
+        ├── router/index.js
+        ├── api/index.js       # Axios 封装 + 所有 API 函数
+        └── views/
             ├── Home.vue       # 首页
-            ├── About.vue      # 关于我们
-            ├── News.vue       # 新闻中心
-            ├── Products.vue   # 产品服务
-            ├── Cases.vue      # 成功案例
-            └── Contact.vue    # 联系我们
+            ├── About.vue      # 关于我们（动态数据）
+            ├── Products.vue   # 产品服务（API）
+            ├── Projects.vue   # 工程案例（API）
+            ├── Custom.vue     # 专属定制（表单对接 API）
+            ├── News.vue       # 新闻中心（API）
+            └── Contact.vue    # 联系我们（表单对接 API）
 ```
 
-## 后端模型
+## REST API 端点
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET | `/api/about/` | 企业概况（公司信息 + 历程 + 荣誉 + 团队） |
+| GET | `/api/products/` | 产品列表，支持 `?category=slug&recommended=1` |
+| GET | `/api/product-categories/` | 产品分类 |
+| GET | `/api/cases/` | 案例列表，支持 `?category=slug&recommended=1` |
+| GET | `/api/case-categories/` | 案例分类 |
+| GET | `/api/news/` | 新闻列表，支持 `?category=slug&top=1` |
+| GET | `/api/news-categories/` | 新闻分类 |
+| POST | `/api/contact/` | 提交联系表单 |
+
+## 数据模型
 
 | 应用 | 模型 | 说明 |
 |------|------|------|
-| about | CompanyInfo | 公司基本信息（单例） |
+| about | CompanyInfo | 公司基本信息（单例模式） |
 | about | DevelopmentHistory | 发展历程时间线 |
 | about | Honor | 资质荣誉 |
 | about | TeamMember | 团队成员 |
-| news | NewsCategory | 新闻分类 |
-| news | News | 新闻资讯（草稿/发布） |
 | products | ProductCategory | 产品分类 |
-| products | Product | 产品服务 |
+| products | Product | 产品服务（在线/草稿/下线） |
 | products | ProductImage | 产品轮播图 |
 | cases | CaseCategory | 案例分类 |
 | cases | Case | 成功案例 |
+| news | NewsCategory | 新闻分类 |
+| news | News | 新闻资讯（草稿/发布，支持置顶） |
+| home | Contact | 联系表单（存储到 lianxi 表） |
 
 ## 常用命令
 
 ### 后端
 
 ```bash
-# 激活虚拟环境
 cd d:/claudeconfig/django企业官网
 source venv/Scripts/activate
-
-# 启动开发服务器
 python manage.py runserver
-
-# 数据库迁移
 python manage.py makemigrations
 python manage.py migrate
-
-# 创建超级用户
-python manage.py createsuperuser
-
-# 运行检查
 python manage.py check
 ```
 
 ### 前端
 
 ```bash
-cd d:/claudeconfig/django企业官网/frontend
-
-# 安装依赖
+cd frontend
 npm install
-
-# 启动开发服务器
-npm run dev
-
-# 构建生产版本
-npm run build
-
-# 预览生产版本
+npm run dev        # 开发（Vite 代理 /api → Django）
+npm run build      # 构建 + 复制 index.html 到 templates/
 npm run preview
+```
+
+### 数据库填充
+
+```bash
+python seed_data.py
 ```
 
 ## 开发地址
 
 | 服务 | 地址 |
 |------|------|
-| Django 后台管理 | http://127.0.0.1:8000/admin |
-| Vue 前台页面 | http://localhost:5173 |
+| Django 后台 | http://127.0.0.1:8000/admin |
+| Vue 开发 | http://localhost:5173 |
 | 管理账号 | ll123 / admin123 |
 
-## 关键配置说明
+## 部署说明
 
-### SimpleUI 后台主题
+项目部署在 **Render** 平台，`build.sh` 为构建脚本：
+1. 安装 Python 依赖
+2. 安装 Node.js（如未预装）
+3. `cd frontend && npm install && npm run build`
+4. `python manage.py migrate --noinput`
+5. `python seed_data.py`（幂等，数据存在则跳过）
+6. `python manage.py collectstatic --noinput`
 
-在 `settings.py` 中配置 `SIMPLEUI_CONFIG`:
-```python
-SIMPLEUI_CONFIG = {
-    'system_keep': True,      # 保留 Django 原生用户/组菜单
-    'menu_display': ['企业概况', '新闻中心', '产品管理', '案例管理', '认证和授权'],
-    'dynamic': True,
-}
-```
-`simpleui` 必须在 `INSTALLED_APPS` 中排在 `django.contrib.admin` 上面。
+运行时通过 `Procfile` 启动 gunicorn。
 
-### Vite 代理配置
+前端也可独立部署到 Cloudflare Pages：
+- 构建产物 `frontend/dist/`
+- `_redirects` 规则将 `/api/*`、`/admin/*`、`/media/*` 代理到后端
 
-`frontend/vite.config.js` 中将 `/api` 和 `/media` 代理到 Django 后端，解决开发环境跨域问题。
+环境变量：
+- `DEBUG` — 调试模式（默认 False）
+- `ALLOWED_HOST` — 自定义主机名
+- `RENDER_EXTERNAL_HOSTNAME` — Render 自动注入
+- `SECRET_KEY` — Django 密钥（生产环境应设置）
+- `SUPABASE_PASSWORD` — 数据库密码（已通过环境变量配置）
 
-### ImageField 依赖
+## SimpleUI 后台主题
 
-使用 ImageField 需要安装 Pillow：`pip install Pillow`
+`simpleui` 必须在 `INSTALLED_APPS` 中排在 `django.contrib.admin` 上面。菜单配置在 `SIMPLEUI_CONFIG.menus` 中。
 
-## 数据模型设计要点
+## 设计要点
 
-- **CompanyInfo** 通过 `has_add_permission` 限制只能有一条记录（单例模式）
-- 所有模型使用 **Inline 内联编辑** 在父模型管理页中编辑关联数据
-- 模型 admin 统一使用 **fieldsets** 分组字段
-- 排序字段使用 **list_editable** 可直接在列表中修改
-- 使用 **admin action** 提供批量操作（设为发布、设为推荐等）
+- **CompanyInfo** 通过 `has_add_permission` 限制只能有一条记录
+- ImageField 依赖 Pillow
+- 所有模型使用 Inline 内联 + fieldsets 分组
+- Admin 使用 list_editable 支持列表内直接修改排序/状态
+- Admin action 提供批量操作（设为发布、设为推荐等）

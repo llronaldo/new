@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://new-production-ba27.up.railway.app/api'
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://ll54184.eu.cc/api'
 
 const api = axios.create({
   baseURL: API_BASE,
@@ -59,6 +59,12 @@ export function getNewsCategories() {
 /** 获取新闻列表，支持 ?category=slug & ?top=1 */
 export function getNews(params = {}) {
   return api.get('/news/', { params })
+}
+
+// ===== 企业概况 API =====
+/** 获取企业概况（公司信息 + 发展历程 + 荣誉 + 团队） */
+export function getAbout() {
+  return api.get('/about/')
 }
 
 export default api

@@ -10,6 +10,8 @@
           <router-link to="/products" class="nav-link" active-class="active">产品</router-link>
           <router-link to="/projects" class="nav-link" active-class="active">工程</router-link>
           <router-link to="/custom" class="nav-link" active-class="active">定制</router-link>
+          <router-link to="/news" class="nav-link" active-class="active">新闻</router-link>
+          <router-link to="/about" class="nav-link" active-class="active">关于</router-link>
           <router-link to="/contact" class="nav-link" active-class="active">联系</router-link>
         </nav>
         <div class="header-spacer"></div>
@@ -22,6 +24,8 @@
         <router-link to="/products" class="mobile-link" @click="mobileOpen = false">产品</router-link>
         <router-link to="/projects" class="mobile-link" @click="mobileOpen = false">工程</router-link>
         <router-link to="/custom" class="mobile-link" @click="mobileOpen = false">定制</router-link>
+        <router-link to="/news" class="mobile-link" @click="mobileOpen = false">新闻</router-link>
+        <router-link to="/about" class="mobile-link" @click="mobileOpen = false">关于</router-link>
         <router-link to="/contact" class="mobile-link" @click="mobileOpen = false">联系</router-link>
       </nav>
     </header>
@@ -31,27 +35,29 @@
     <footer class="footer">
       <div class="container footer-inner">
         <div class="footer-col brand-col">
-          <h3 class="footer-brand"><span class="footer-logo-icon">&#9675;</span> 臻品家居</h3>
+          <h3 class="footer-brand"><span class="footer-logo-icon">&#9675;</span> {{ companyName }}</h3>
           <p class="footer-tagline">源头工厂 · 匠心制造</p>
-          <p class="footer-copy">&copy; 2010–2026 臻品家居 版权所有</p>
+          <p class="footer-copy">&copy; 2010–2026 {{ companyName }} 版权所有</p>
         </div>
         <div class="footer-col">
           <h4>快速导航</h4>
           <router-link to="/products">产品系列</router-link>
           <router-link to="/projects">工程案例</router-link>
           <router-link to="/custom">定制服务</router-link>
+          <router-link to="/about">关于我们</router-link>
+          <router-link to="/news">新闻中心</router-link>
           <router-link to="/contact">联系我们</router-link>
         </div>
         <div class="footer-col">
           <h4>总部展厅</h4>
-          <p>佛山市顺德区乐从镇<br/>家居大道 288 号 · 5F</p>
+          <p>{{ showroomAddr }}</p>
           <p class="footer-sub">每日 9:00 – 18:00</p>
         </div>
         <div class="footer-col">
           <h4>工厂 & 联系</h4>
-          <p>佛山市南海区九江镇<br/>工业大道 66 号</p>
-          <p>400-168-8888</p>
-          <p>info@zhenpin.com</p>
+          <p>{{ factoryAddr }}</p>
+          <p>{{ companyPhone }}</p>
+          <p>{{ companyEmail }}</p>
         </div>
       </div>
     </footer>
@@ -60,10 +66,33 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { getAbout } from './api/index.js'
 const isScrolled = ref(false)
 const mobileOpen = ref(false)
 function handleScroll() { isScrolled.value = window.scrollY > 60 }
-onMounted(() => window.addEventListener('scroll', handleScroll, { passive: true }))
+
+// Footer 动态数据（API 获取，失败则使用默认值）
+const companyName = ref('臻品家居')
+const showroomAddr = ref('佛山市顺德区乐从镇\n家居大道 288 号 · 5F')
+const factoryAddr = ref('佛山市南海区九江镇\n工业大道 66 号')
+const companyPhone = ref('400-168-8888')
+const companyEmail = ref('info@zhenpin.com')
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  // 获取公司信息更新 footer
+  getAbout().then(res => {
+    if (res.code === 200 && res.data) {
+      const c = res.data
+      companyName.value = c.name || companyName.value
+      showroomAddr.value = c.address || showroomAddr.value
+      companyPhone.value = c.phone || companyPhone.value
+      companyEmail.value = c.email || companyEmail.value
+    }
+  }).catch(e => {
+    console.warn('加载公司信息失败，使用默认值:', e.message)
+  })
+})
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 

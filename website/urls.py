@@ -13,12 +13,16 @@ from home.views import ContactCreateAPIView
 from products.views import ProductListAPIView, ProductCategoryListAPIView
 from cases.views import CaseListAPIView, CaseCategoryListAPIView
 from news.views import NewsListAPIView, NewsCategoryListAPIView
+from about.views import AboutAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # 联系表单
     path('api/contact/', ContactCreateAPIView.as_view(), name='api-contact'),
+
+    # 企业概况
+    path('api/about/', AboutAPIView.as_view(), name='api-about'),
 
     # 产品 API
     path('api/products/', ProductListAPIView.as_view(), name='api-products'),

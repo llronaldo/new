@@ -106,7 +106,9 @@
               <input v-model="form.email" placeholder="电子邮箱" class="fm-input fm-full"/>
               <select v-model="form.type" class="fm-input fm-full"><option value="">定制类型</option><option>尺寸定制</option><option>材质定制</option><option>颜色定制</option><option>全案定制</option></select>
               <textarea v-model="form.message" placeholder="请描述您的需求（空间类型、风格偏好、预算范围等）" rows="5" class="fm-input fm-full"></textarea>
-              <button type="submit" class="fm-submit">{{ submitting ? '提交中...' : '提交需求' }}</button>
+              <button type="submit" class="fm-submit" :disabled="submitting">{{ submitting ? '提交中...' : '提交需求' }}</button>
+              <p v-if="submitStatus === 'success'" class="submit-msg success">&#10003; {{ submitMessage }}</p>
+              <p v-if="submitStatus === 'error'" class="submit-msg error">{{ submitMessage }}</p>
             </form>
           </div>
         </div>
@@ -117,6 +119,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
+import { submitContact } from '../api/index.js'
 
 const customTypes = [
   { icon: '📐', title: '尺寸定制', subtitle: '空间不设限，尺寸不将就', points: ['精确到毫米的量尺服务', '异形、转角等特殊空间专属方案', '已有产品尺寸修改适配', '非标尺寸不加收开模费'] },
@@ -150,13 +153,53 @@ const customCases = [
 
 const form = reactive({ name: '', phone: '', email: '', type: '', message: '' })
 const submitting = ref(false)
+const submitStatus = ref('')
+const submitMessage = ref('')
+
+function validate() {
+  if (!form.name.trim()) { submitStatus.value = 'error'; submitMessage.value = '请输入您的称呼'; return false }
+  if (!form.phone.trim()) { submitStatus.value = 'error'; submitMessage.value = '请输入联系电话'; return false }
+  const phone = form.phone.trim()
+  if (!/^1[3-9]\d{9}$/.test(phone) && !/^\d{3,4}-\d{7,8}$/.test(phone)) {
+    submitStatus.value = 'error'; submitMessage.value = '请输入正确的手机号或座机号'; return false
+  }
+  return true
+}
+
 function handleSubmit() {
+  if (!validate()) return
   submitting.value = true
-  setTimeout(() => {
-    alert('感谢您的定制需求！专属设计顾问将在 24 小时内与您联系。')
-    Object.assign(form, { name: '', phone: '', email: '', type: '', message: '' })
-    submitting.value = false
-  }, 1200)
+  submitStatus.value = ''
+  submitMessage.value = ''
+
+  submitContact({
+    contact_name: form.name,
+    contact_phone: form.phone,
+    company: '',
+    project_type: form.type,
+    quantity: '',
+    city: '',
+    budget: '',
+    message: form.message,
+  })
+    .then((res) => {
+      if (res.code === 200) {
+        submitStatus.value = 'success'
+        submitMessage.value = '提交成功！专属设计顾问将在 24 小时内与您联系。'
+        Object.assign(form, { name: '', phone: '', email: '', type: '', message: '' })
+      } else {
+        submitStatus.value = 'error'
+        submitMessage.value = res.message || '提交失败，请稍后重试'
+      }
+    })
+    .catch((err) => {
+      console.error('提交失败:', err)
+      submitStatus.value = 'error'
+      submitMessage.value = err.response?.data?.message || '提交失败，请稍后重试或直接致电 400-168-8888'
+    })
+    .finally(() => {
+      submitting.value = false
+    })
 }
 </script>
 
@@ -245,6 +288,11 @@ select.fm-input { color: var(--color-gray); cursor: pointer; }
 textarea.fm-input { resize: vertical; }
 .fm-submit { width: 100%; padding: 16px; background: var(--color-dark); color: #aaa; border: none; font-size: 14px; letter-spacing: 4px; cursor: pointer; transition: all 0.3s; font-family: inherit; margin-top: 8px; }
 .fm-submit:hover { background: var(--color-gold); color: #fff; }
+.fm-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.submit-msg { margin-top: 16px; padding: 12px; font-size: 13px; letter-spacing: 1px; text-align: center; }
+.submit-msg.success { color: #2d6a4f; background: #d8f3dc; border: 1px solid #b7e4c7; }
+.submit-msg.error { color: #9b2226; background: #ffddd6; border: 1px solid #ffb3a7; }
 
 @media (max-width: 768px) {
   .page-banner { padding: 140px 0 60px; }
