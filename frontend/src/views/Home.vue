@@ -87,7 +87,7 @@
         <p class="section-sub center">两千余项目的经验积淀，服务涵盖酒店、别墅、商业空间与办公领域</p>
         <div class="projects-grid">
           <div class="project-card" v-for="p in displayProjects" :key="p.id">
-            <div class="project-img" :style="p.cover ? { backgroundImage: 'url(' + p.cover + ')' } : {}"></div>
+            <div class="project-img" :style="p.cover ? { backgroundImage: 'url(' + p.cover + ')' } : { backgroundImage: 'url(https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80)' }"></div>
             <div class="project-info">
               <span class="project-cat">{{ p.category?.name }}</span>
               <h3>{{ p.title }}</h3>

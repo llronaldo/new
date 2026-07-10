@@ -23,7 +23,7 @@
           <p class="result-count">共 {{ filteredNews.length }} 篇</p>
           <div class="news-list">
             <div class="news-card" v-for="item in filteredNews" :key="item.id" :class="{ expanded: expandedId === item.id, 'is-top': item.is_top }" @click="toggleExpand(item.id)">
-              <div class="news-cover" :style="item.cover ? { backgroundImage: 'url(' + item.cover + ')' } : {}">
+              <div class="news-cover" :style="item.cover ? { backgroundImage: 'url(' + item.cover + ')' } : { backgroundImage: 'url(https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=80)' }">
                 <span class="news-tag">{{ item.category?.name }}</span>
                 <span v-if="item.is_top" class="top-badge">置顶</span>
               </div>

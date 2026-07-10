@@ -20,7 +20,7 @@
 
           <div class="project-list">
             <div class="project-row" v-for="(p, idx) in filteredProjects" :key="p.id" :class="{ reversed: idx % 2 === 1 }">
-              <div class="project-visual" :style="p.cover ? { backgroundImage: 'url(' + p.cover + ')' } : {}">
+              <div class="project-visual" :style="p.cover ? { backgroundImage: 'url(' + p.cover + ')' } : { backgroundImage: 'url(https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80)' }">
                 <div class="pv-tag">{{ p.category?.name }}</div>
               </div>
               <div class="project-detail">

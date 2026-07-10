@@ -20,7 +20,7 @@
         <div v-if="loading" class="loading-text">加载中…</div>
         <div class="product-grid" v-else>
           <div class="product-card" v-for="p in filteredProducts" :key="p.id">
-            <div class="product-img" :style="p.cover ? { backgroundImage: 'url(' + p.cover + ')' } : {}"></div>
+            <div class="product-img" :style="p.cover ? { backgroundImage: 'url(' + p.cover + ')' } : { backgroundImage: 'url(https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80)' }"></div>
             <div class="product-body">
               <div class="product-header">
                 <span class="product-tag">{{ p.category?.name }}</span>
