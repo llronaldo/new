@@ -150,7 +150,7 @@ const filteredProducts = computed(() =>
 .guide-text p { font-size: 15px; color: var(--color-gray); line-height: 1.9; margin-bottom: 16px; }
 .text-link { color: var(--color-gold); text-decoration: none; font-size: 14px; letter-spacing: 3px; border-bottom: 1px solid var(--color-gold); padding-bottom: 4px; transition: opacity 0.3s; }
 .text-link:hover { opacity: 0.7; }
-.guide-visual { min-height: 400px; background: url('https://images.unsplash.com/photo-1600210492492-0946911123ea?w=1200&q=80') center/cover; position: relative; }
+.guide-visual { min-height: 400px; background: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80') center/cover; position: relative; }
 
 @media (max-width: 768px) {
   .page-banner { padding: 140px 0 60px; }

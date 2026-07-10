@@ -310,7 +310,7 @@ select.fm-input { color: var(--color-gray); cursor: pointer; }
 .submit-msg.error { color: #9b2226; background: #ffddd6; border: 1px solid #ffb3a7; }
 
 /* 地图 */
-.map-placeholder { background: linear-gradient(135deg, rgba(26,26,26,0.85), rgba(42,36,28,0.85)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&q=80') center/cover; padding: 140px 0; text-align: center; }
+.map-placeholder { background: linear-gradient(135deg, rgba(26,26,26,0.85), rgba(42,36,28,0.85)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80') center/cover; padding: 140px 0; text-align: center; }
 .map-pin { display: block; font-size: 52px; color: var(--color-gold); margin-bottom: 28px; }
 .map-addr { color: #aaa; font-size: 20px; letter-spacing: 4px; margin-bottom: 12px; font-family: var(--font-serif); }
 .map-sub { font-size: 14px; color: #595959; letter-spacing: 1px; line-height: 1.8; }

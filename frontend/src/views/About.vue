@@ -147,7 +147,7 @@ onMounted(async () => {
 /* 公司简介 */
 .intro-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: start; }
 .intro-body { font-size: 15px; color: var(--color-gray); line-height: 2.1; }
-.intro-cover { margin-top: 32px; height: 300px; background: url('https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800&q=80') center/cover; border-radius: 2px; }
+.intro-cover { margin-top: 32px; height: 300px; background: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80') center/cover; border-radius: 2px; }
 .intro-values { display: flex; flex-direction: column; gap: 20px; }
 .value-card { background: #fafaf8; padding: 32px 28px; border-left: 2px solid var(--color-gold); }
 .value-card h4 { font-size: 14px; letter-spacing: 3px; color: var(--color-gold); margin-bottom: 10px; }
