@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://new-n8gt.onrender.com/api'
+// 生产环境前后端同域，用相对路径；开发环境走 Vite proxy
+const API_BASE = import.meta.env.VITE_API_BASE || '/api'
 
 const api = axios.create({
   baseURL: API_BASE,
